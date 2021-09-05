@@ -1,11 +1,11 @@
 <script>
 	export let name;
 	export let profesi;
-	const foto = "./gambar.png";
+	export let img; 
 </script>
 
 <main>
-	<img alt="..." src="{foto}"/>
+	<img alt="..." src="{img}"/>
 	<h1> .: {name} :. </h1>
 	<p> {profesi} </p>
 </main>

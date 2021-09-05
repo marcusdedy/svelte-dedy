@@ -4,7 +4,8 @@ const app = new App({
 	target: document.body,
 	props: {
 		name: 'Marcus Dedy',
-		profesi: '{ Web Developer }'
+		profesi: '{ Web Developer }',
+		img: '../img/gambar.png'
 	}
 });
 
