@@ -5,7 +5,7 @@ const app = new App({
 	props: {
 		name: 'Marcus Dedy',
 		profesi: '{ Web Developer }',
-		img: './gambar.png'
+		img: 'img/gambar.png'
 	}
 });
 
