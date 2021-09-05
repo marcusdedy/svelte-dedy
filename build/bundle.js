@@ -497,7 +497,7 @@ var app = (function () {
     	props: {
     		name: 'Marcus Dedy',
     		profesi: '{ Web Developer }',
-    		img: './gambar.png'
+    		img: 'img/gambar.png'
     	}
     });
 
