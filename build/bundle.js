@@ -331,8 +331,8 @@ var app = (function () {
 
     function create_fragment(ctx) {
     	let main;
-    	let img;
-    	let img_src_value;
+    	let img_1;
+    	let img_1_src_value;
     	let t0;
     	let h1;
     	let t1;
@@ -345,7 +345,7 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			main = element("main");
-    			img = element("img");
+    			img_1 = element("img");
     			t0 = space();
     			h1 = element("h1");
     			t1 = text(".: ");
@@ -354,23 +354,23 @@ var app = (function () {
     			t4 = space();
     			p = element("p");
     			t5 = text(/*profesi*/ ctx[1]);
-    			attr_dev(img, "alt", "...");
-    			if (!src_url_equal(img.src, img_src_value = foto)) attr_dev(img, "src", img_src_value);
-    			attr_dev(img, "class", "svelte-s3kys1");
-    			add_location(img, file, 7, 1, 100);
+    			attr_dev(img_1, "alt", "...");
+    			if (!src_url_equal(img_1.src, img_1_src_value = /*img*/ ctx[2])) attr_dev(img_1, "src", img_1_src_value);
+    			attr_dev(img_1, "class", "svelte-s3kys1");
+    			add_location(img_1, file, 7, 1, 85);
     			attr_dev(h1, "class", "svelte-s3kys1");
-    			add_location(h1, file, 8, 1, 131);
+    			add_location(h1, file, 8, 1, 115);
     			attr_dev(p, "class", "svelte-s3kys1");
-    			add_location(p, file, 9, 1, 156);
+    			add_location(p, file, 9, 1, 140);
     			attr_dev(main, "class", "svelte-s3kys1");
-    			add_location(main, file, 6, 0, 92);
+    			add_location(main, file, 6, 0, 77);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, main, anchor);
-    			append_dev(main, img);
+    			append_dev(main, img_1);
     			append_dev(main, t0);
     			append_dev(main, h1);
     			append_dev(h1, t1);
@@ -381,6 +381,10 @@ var app = (function () {
     			append_dev(p, t5);
     		},
     		p: function update(ctx, [dirty]) {
+    			if (dirty & /*img*/ 4 && !src_url_equal(img_1.src, img_1_src_value = /*img*/ ctx[2])) {
+    				attr_dev(img_1, "src", img_1_src_value);
+    			}
+
     			if (dirty & /*name*/ 1) set_data_dev(t2, /*name*/ ctx[0]);
     			if (dirty & /*profesi*/ 2) set_data_dev(t5, /*profesi*/ ctx[1]);
     		},
@@ -402,14 +406,13 @@ var app = (function () {
     	return block;
     }
 
-    const foto = "/img/gambar.png";
-
     function instance($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('App', slots, []);
     	let { name } = $$props;
     	let { profesi } = $$props;
-    	const writable_props = ['name', 'profesi'];
+    	let { img } = $$props;
+    	const writable_props = ['name', 'profesi', 'img'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<App> was created with unknown prop '${key}'`);
@@ -418,26 +421,28 @@ var app = (function () {
     	$$self.$$set = $$props => {
     		if ('name' in $$props) $$invalidate(0, name = $$props.name);
     		if ('profesi' in $$props) $$invalidate(1, profesi = $$props.profesi);
+    		if ('img' in $$props) $$invalidate(2, img = $$props.img);
     	};
 
-    	$$self.$capture_state = () => ({ name, profesi, foto });
+    	$$self.$capture_state = () => ({ name, profesi, img });
 
     	$$self.$inject_state = $$props => {
     		if ('name' in $$props) $$invalidate(0, name = $$props.name);
     		if ('profesi' in $$props) $$invalidate(1, profesi = $$props.profesi);
+    		if ('img' in $$props) $$invalidate(2, img = $$props.img);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [name, profesi];
+    	return [name, profesi, img];
     }
 
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance, create_fragment, safe_not_equal, { name: 0, profesi: 1 });
+    		init(this, options, instance, create_fragment, safe_not_equal, { name: 0, profesi: 1, img: 2 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -456,6 +461,10 @@ var app = (function () {
     		if (/*profesi*/ ctx[1] === undefined && !('profesi' in props)) {
     			console.warn("<App> was created without expected prop 'profesi'");
     		}
+
+    		if (/*img*/ ctx[2] === undefined && !('img' in props)) {
+    			console.warn("<App> was created without expected prop 'img'");
+    		}
     	}
 
     	get name() {
@@ -473,13 +482,22 @@ var app = (function () {
     	set profesi(value) {
     		throw new Error("<App>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
+
+    	get img() {
+    		throw new Error("<App>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set img(value) {
+    		throw new Error("<App>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
     }
 
     const app = new App({
     	target: document.body,
     	props: {
     		name: 'Marcus Dedy',
-    		profesi: '{ Web Developer }'
+    		profesi: '{ Web Developer }',
+    		img: '../img/gambar.png'
     	}
     });
 
