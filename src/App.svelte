@@ -1,7 +1,7 @@
 <script>
 	export let name;
 	export let profesi;
-	const foto = "/img/gambar.png";
+	const foto = "./gambar.png";
 </script>
 
 <main>
